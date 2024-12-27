@@ -1,101 +1,243 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>Propose Page</title>
+  <meta charset="UTF-8" />
+  <title>Our Story | Will You Marry Me?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    /* ================================
+      공통 스타일 및 초기화
+    ================================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #FFE5EC; /* 연한 핑크 */
+      color: #333;
+      line-height: 1.6;
+      overflow: hidden; /* 슬라이드 전환 시 화면 스크롤 방지 */
+    }
+
+    /* 반응형 기본 세팅 */
     body {
-      font-family: sans-serif;
-      background: #fce4ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ================================
+      컨테이너 & 슬라이드
+    ================================= */
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px; /* 데스크톱에서 최대 너비 600px */
+      height: 90vh;     /* 브라우저 높이의 90% 사용 */
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 각 씬(슬라이드) 기본 스타일 */
+    .scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
-    }
-    h1 {
-      margin: 1rem 0;
-      color: #c2185b;
-    }
-    .proposal-img {
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .my-video {
-      margin: 2rem 0;
-      width: 100%;
-      max-width: 560px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .message {
       text-align: center;
-      margin-top: 1rem;
-      line-height: 1.5;
-    }
-    .button-group {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
       justify-content: center;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
-    .button-group button {
+
+    /* .active가 붙으면 화면에 표시 (opacity 1) */
+    .scene.active {
+      opacity: 1;
+      z-index: 1; /* 앞으로 가져옴 */
+    }
+
+    /* 간단한 애니메이션 (페이드-인 느낌) */
+    .fade-in {
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 씬별 이미지 스타일 */
+    .scene img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1rem;
+    }
+
+    /* 텍스트 스타일 */
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    /* 버튼 공통 스타일 */
+    .btn {
       cursor: pointer;
-      font-size: 1rem;
-      padding: 0.6rem 1rem;
+      padding: 0.8rem 1.2rem;
+      margin: 0.5rem;
       border: none;
       border-radius: 4px;
+      background: #f48fb1;
       color: #fff;
-      background-color: #c2185b;
-      transition: background-color 0.3s;
+      font-size: 1rem;
+      transition: background 0.3s;
     }
-    .button-group button:hover {
-      background-color: #ad1457;
+    .btn:hover {
+      background: #ec407a;
+    }
+
+    /* YES/NO 버튼 (마지막 씬) */
+    .yes-btn {
+      background: #e91e63;
+    }
+    .yes-btn:hover {
+      background: #d81b60;
+    }
+    .no-btn {
+      background: #9e9e9e;
+    }
+    .no-btn:hover {
+      background: #616161;
+    }
+
+    /* 반응형: 모바일에서 버튼이나 텍스트가 너무 크게/작게 되지 않게 */
+    @media (max-width: 480px) {
+      .container {
+        height: 95vh; /* 모바일 화면 조금 더 크게 */
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Will You Marry Me?</h1>
-  
-  <!-- 이미지 예시 -->
-  <img src="images/proposal.jpg" alt="프로포즈 사진" class="proposal-img" />
+  <div class="container">
+    
+    <!-- ========== 씬 1: 인트로 ========== -->
+    <div class="scene active" id="scene1">
+      <img src="images/memory1.jpg" alt="우리의 추억 사진" class="fade-in" />
+      <h1 class="fade-in" style="animation-delay:0.2s;">우리의 이야기</h1>
+      <p class="fade-in" style="animation-delay:0.4s;">
+        처음 만났을 때가 기억나?<br />
+        어색했던 그 순간이 이제는 너무 소중한 추억이 됐지.
+      </p>
+      <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(2)">
+        다음으로
+      </button>
+    </div>
 
-  <div class="message">
-    <p>내가 준비한 특별한 순간을 담은 영상을 봐줘!</p>
+    <!-- ========== 씬 2: 추억 회상 ========== -->
+    <div class="scene" id="scene2">
+      <img src="images/memory2.jpg" alt="함께한 순간들" class="fade-in" />
+      <h2 class="fade-in" style="animation-delay:0.2s;">함께한 순간들</h2>
+      <p class="fade-in" style="animation-delay:0.4s;">
+        웃고, 울고, 서로에게 기대며 수많은 날들을 보냈어.<br />
+        그 모든 시간 덕분에 내가 얼마나 행복했는지 몰라.
+      </p>
+      <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(3)">
+        더 알고 싶어!
+      </button>
+    </div>
+
+    <!-- ========== 씬 3: 프로포즈 ========== -->
+    <div class="scene" id="scene3">
+      <img src="images/proposal.jpg" alt="프러포즈" class="fade-in" />
+      <h2 class="fade-in" style="animation-delay:0.2s;">Will You Marry Me?</h2>
+      <p class="fade-in" style="animation-delay:0.4s;">
+        이렇게 많은 추억을 함께 만들어왔는데,<br />
+        앞으로의 인생도 함께 써나가면 안 될까?<br />
+        나와 결혼해줄래?
+      </p>
+      <div class="fade-in" style="animation-delay:0.6s;">
+        <button class="btn yes-btn" onclick="showFinal(true)">YES</button>
+        <button class="btn no-btn" onclick="showFinal(false)">NO</button>
+      </div>
+    </div>
+
+    <!-- ========== 씬 4: 최종 메시지 ========== -->
+    <div class="scene" id="scene4">
+      <h2 id="finalText" class="fade-in"></h2>
+      <p class="fade-in" style="animation-delay:0.2s;">
+        함께 걸어갈 더 많은 추억, <br />
+        우리 둘만의 새로운 이야기를 만들어 가자.<br />
+        사랑해.
+      </p>
+    </div>
+
   </div>
 
-  <!-- 직접 업로드한 mp4 영상 예시 -->
-  <!--
-  <video 
-    src="videos/proposal.mp4" 
-    class="my-video" 
-    controls 
-    autoplay 
-    muted 
-    loop 
-    poster="images/poster.jpg">
-  </video>
-  -->
+  <script>
+    /**
+     * 씬(페이지) 간 이동 함수
+     */
+    function nextScene(nextId) {
+      const currentScene = document.querySelector('.scene.active');
+      if (currentScene) currentScene.classList.remove('active');
 
-  <!-- 유튜브 임베드 영상 예시 -->
-  <iframe 
-    width="560" 
-    height="315" 
-    class="my-video"
-    src="https://www.youtube.com/embed/동영상ID?autoplay=1&mute=1"
-    frameborder="0" 
-    allow="autoplay; encrypted-media" 
-    allowfullscreen
-  ></iframe>
+      const nextScene = document.getElementById(`scene${nextId}`);
+      if (nextScene) nextScene.classList.add('active');
+    }
 
-  <div class="message">
-    <p>당신을 위해 모든 순간을 기록했어. 앞으로의 인생도 함께 찍어 나갈 수 있을까?</p>
-  </div>
-  
-  <div class="button-group">
-    <button onclick="alert('YES! 정말 고마워!')">YES</button>
-    <button onmouseover="alert('NO는 안 돼!')">NO</button>
-  </div>
+    /**
+     * YES/NO 버튼 처리
+     */
+    function showFinal(isYes) {
+      // 현재 씬(3) 비활성화
+      const scene3 = document.getElementById('scene3');
+      scene3.classList.remove('active');
+
+      // 다음 씬(4) 활성화
+      const scene4 = document.getElementById('scene4');
+      scene4.classList.add('active');
+
+      const finalText = document.getElementById('finalText');
+      if (isYes) {
+        finalText.textContent = "당신과 평생을 함께하고 싶어! 고마워!";
+      } else {
+        finalText.textContent = "장난이지? 사실 거절은 안 받는다구.";
+      }
+    }
+  </script>
 </body>
 </html>

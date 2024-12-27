@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Our Ghibli Story | Will You Marry Me?</title>
+  <title>2025.01.01 Dogang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- (선택) 구글 폰트 적용 -->
@@ -185,10 +185,10 @@
     <!-- ========== 씬 1: 인트로 ========== -->
     <div class="scene active" id="scene1">
       <img src="images/memory1.jpg" alt="우리의 추억 사진" class="fade-in" />
-      <h1 class="fade-in" style="animation-delay:0.2s;">우리의 지브리 감성 이야기</h1>
+      <h1 class="fade-in" style="animation-delay:0.2s;">연화야 옛날에 지하철에서 기억나?</h1>
       <p class="fade-in" style="animation-delay:0.4s;">
-        우리, 처음 만났을 때가 기억나?<br />
-        어색했던 그 순간이 이제 한 편의 애니메이션 같은 추억이 되었어.
+        너가 처음으로 왜 결혼하자고 안 물어보냐고 했을때 기억나??<br />
+        그때 지금처럼 지하철을 타고 집으로 가고 있었어
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(2)">
         다음으로
@@ -198,11 +198,11 @@
     <!-- ========== 씬 2: 추억 회상 ========== -->
     <div class="scene" id="scene2">
       <img src="images/memory2.jpg" alt="함께한 순간들" class="fade-in" />
-      <h2 class="fade-in" style="animation-delay:0.2s;">함께한 순간들</h2>
+      <h2 class="fade-in" style="animation-delay:0.2s;">파타고니아 불타는 고구마</h2>
       <p class="fade-in" style="animation-delay:0.4s;">
-        숲 속을 함께 거니는 토토로처럼,<br />
-        언제나 내게 편안한 휴식이 되어준 너.<br />
-        우리의 모든 시간은 지브리 영화 속 장면 같아.
+        2022년 겨울, 교대에서 이야기를 할 때 넌 나의 운명이라고 바로 느꼈어.<br />
+        그래서 그 해 겨울에 파타고니아에 가서 프로포즈를 하자고 다짐했어.<br />
+        하지만 파타고니아에는 갈 수 없었어.
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(3)">
         더 알고 싶어!
@@ -214,8 +214,9 @@
       <img src="images/proposal.jpg" alt="프러포즈" class="fade-in" />
       <h2 class="fade-in" style="animation-delay:0.2s;">Will You Marry Me?</h2>
       <p class="fade-in" style="animation-delay:0.4s;">
-        이렇게 많은 추억을 함께 만들어왔는데,<br />
-        앞으로의 인생도 함께 써나가면 안 될까?<br />
+        그 때 기억나? 내가 지하철에서....
+        내가 먼저 결혼하자고 말 하고 싶었는데.. 아무런 준비가 안됐었던 날..<br />
+        지금은 준비 됐어 지금 말해도 괜찮을까?<br />
         나와 결혼해줄래?
       </p>
       <div class="fade-in" style="animation-delay:0.6s;">
@@ -282,7 +283,7 @@
 
       const finalText = document.getElementById('finalText');
       if (isYes) {
-        finalText.textContent = "당신과 평생을 함께하고 싶어! 고마워!";
+        finalText.textContent = "너와 평생을 함께하고 싶어! 고마워! 사랑해 김연화";
       } else {
         finalText.textContent = "거절은 안 돼! (농담이야, 그래도 널 놓칠 수 없어!)";
       }

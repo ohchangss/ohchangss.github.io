@@ -25,7 +25,7 @@
     html, body {
       height: 100%;
       line-height: 1.6;
-      /* 배경: 수채화 느낌의 은은한 파스텔 그라데이션 (지브리 감성) */
+      /* 지브리 감성의 은은한 파스텔 그라데이션 */
       background: linear-gradient(to bottom right, #e8f3e5, #f9ece6);
       overflow: hidden; /* 슬라이드 전환 시 스크롤 숨김 */
     }
@@ -35,11 +35,10 @@
     ========================== */
     body {
       font-family: 'Noto Serif KR', serif; 
-      /* 서브로 'Dancing Script', cursive 를 일부 헤딩 등에 사용해도 좋음 */
-      color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: #333;
     }
 
     /* =========================
@@ -51,13 +50,13 @@
       max-width: 600px;
       height: 90vh;
       margin: auto;
-      background: #fff9f2; /* 살짝 누리끼리한 흰색 */
+      background: #fff9f2; 
       border-radius: 12px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      border: 2px solid rgba(0,0,0,0.1); /* 얇은 테두리로 수채화 느낌을 더함 */
+      border: 2px solid rgba(0,0,0,0.1);
     }
 
     /* =========================
@@ -116,13 +115,11 @@
     ========================== */
     h1, h2 {
       margin-bottom: 1rem;
-      /* 지브리 느낌을 더하고 싶다면 Dancing Script를 부분 적용 */
       font-family: 'Dancing Script', cursive, 'Noto Serif KR', serif;
-      color: #4f2817; /* 짙은 갈색톤으로 빈티지한 느낌 */
+      color: #4f2817;
     }
     p {
       margin-bottom: 1rem;
-      color: #333;
       line-height: 1.5;
       font-size: 1rem;
       font-weight: 400;
@@ -137,7 +134,7 @@
       margin: 0.5rem;
       border: none;
       border-radius: 4px;
-      background: #d8b4a0; 
+      background: #d8b4a0;
       color: #fff;
       font-size: 1rem;
       transition: background 0.3s, transform 0.3s;
@@ -147,7 +144,7 @@
       transform: translateY(-2px);
     }
 
-    /* YES/NO 버튼 (마지막 씬) */
+    /* YES/NO 버튼 */
     .yes-btn {
       background: #b86e6e;
     }
@@ -185,15 +182,13 @@
 </head>
 <body>
   <div class="container">
-
     <!-- ========== 씬 1: 인트로 ========== -->
     <div class="scene active" id="scene1">
-      <!-- 배경 느낌을 더 살리고 싶다면, 오브젝트 이미지를 적절히 추가 -->
       <img src="images/memory1.jpg" alt="우리의 추억 사진" class="fade-in" />
       <h1 class="fade-in" style="animation-delay:0.2s;">우리의 지브리 감성 이야기</h1>
       <p class="fade-in" style="animation-delay:0.4s;">
-        우리, 처음 만났을 때가 생각나?<br />
-        어색했던 그 순간이 이제는 한 편의 애니메이션 같은 추억이 되었어.
+        우리, 처음 만났을 때가 기억나?<br />
+        어색했던 그 순간이 이제 한 편의 애니메이션 같은 추억이 되었어.
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(2)">
         다음으로
@@ -206,8 +201,8 @@
       <h2 class="fade-in" style="animation-delay:0.2s;">함께한 순간들</h2>
       <p class="fade-in" style="animation-delay:0.4s;">
         숲 속을 함께 거니는 토토로처럼,<br />
-        언제나 나에게 편안한 휴식이 되어준 너.<br />
-        우리의 모든 시간은 마치 지브리 영화 속 장면 같아.
+        언제나 내게 편안한 휴식이 되어준 너.<br />
+        우리의 모든 시간은 지브리 영화 속 장면 같아.
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(3)">
         더 알고 싶어!
@@ -225,7 +220,6 @@
       </p>
       <div class="fade-in" style="animation-delay:0.6s;">
         <button class="btn yes-btn" onclick="showFinal(true)">YES</button>
-        <!-- NO 버튼: 마우스오버 시 도망가기 -->
         <button class="btn no-btn" id="noBtn">NO</button>
       </div>
     </div>
@@ -235,16 +229,32 @@
       <h2 id="finalText" class="fade-in"></h2>
       <p class="fade-in" style="animation-delay:0.2s;">
         함께 걸어갈 더 많은 추억,<br />
-        우리 둘만의 새로운 이야기를 만들어 가자.<br />
+        우리 둘만의 새로운 이야기를 써 내려가자.<br />
         사랑해.
       </p>
     </div>
-
   </div>
+
+  <!-- ===============================
+       BGM (무료 음원) 삽입
+       - muted 상태로 자동재생(loop)
+       - 모바일 브라우저 정책을 고려
+       - 클릭 시 음소거 해제 가능
+  ================================ -->
+  <audio
+    id="bgmAudio"
+    src="https://cdn.pixabay.com/download/audio/2023/06/20/audio_695f63a72f.mp3?filename=a_peaceful_path-147436.mp3"
+    autoplay
+    loop
+    muted
+    style="display:none;"
+  >
+    브라우저가 audio 태그를 지원하지 않습니다.
+  </audio>
 
   <script>
     /**
-     * 씬(페이지) 간 이동 함수
+     * 씬(페이지) 이동 함수
      */
     function nextScene(nextId) {
       const currentScene = document.querySelector('.scene.active');
@@ -255,7 +265,7 @@
     }
 
     /**
-     * YES/NO 버튼 클릭 시 처리
+     * YES/NO 버튼 클릭 시 최종 처리
      */
     function showFinal(isYes) {
       // 현재 씬(3) 비활성화
@@ -266,11 +276,15 @@
       const scene4 = document.getElementById('scene4');
       scene4.classList.add('active');
 
+      // 음소거 해제 (사용자가 YES/NO 클릭했으므로 정책상 재생 가능)
+      const bgmAudio = document.getElementById('bgmAudio');
+      bgmAudio.muted = false;
+
       const finalText = document.getElementById('finalText');
       if (isYes) {
         finalText.textContent = "당신과 평생을 함께하고 싶어! 고마워!";
       } else {
-        finalText.textContent = "거절은 없다고 했잖아! 농담이지만... 사실 널 놓칠 순 없어!";
+        finalText.textContent = "거절은 안 돼! (농담이야, 그래도 널 놓칠 수 없어!)";
       }
     }
 
@@ -279,10 +293,8 @@
      */
     const noBtn = document.getElementById('noBtn');
     noBtn.addEventListener('mouseover', () => {
-      // 랜덤 좌표 계산
-      const randomX = Math.random() * 300 - 150; // -150 ~ 150
-      const randomY = Math.random() * 300 - 150; // -150 ~ 150
-
+      const randomX = Math.random() * 300 - 150; 
+      const randomY = Math.random() * 300 - 150;
       noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
     });
   </script>

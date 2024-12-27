@@ -1,134 +1,101 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>Will You Marry Me?</title>
+  <meta charset="UTF-8">
+  <title>Propose Page</title>
   <style>
-    /* 기본 스타일 초기화 */
-    * {
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box;
-    }
     body {
       font-family: sans-serif;
-      background: linear-gradient(45deg, #FFC1CC, #FFDDE1);
-      animation: bg-animation 10s ease-in-out infinite alternate;
+      background: #fce4ec;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
-      color: #333;
-    }
-    
-    /* 배경 그라디언트 애니메이션 */
-    @keyframes bg-animation {
-      0% {
-        background: linear-gradient(45deg, #FFC1CC, #FFDDE1);
-      }
-      100% {
-        background: linear-gradient(135deg, #FFDDE1, #FFC1CC);
-      }
-    }
-    
-    .container {
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 8px;
       padding: 2rem;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      max-width: 500px;
-      width: 90%;
     }
     h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      margin: 1rem 0;
+      color: #c2185b;
     }
-    h2 {
-      margin-bottom: 1.5rem;
-      color: #e91e63;
+    .proposal-img {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.4;
+    .my-video {
+      margin: 2rem 0;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .message {
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
     }
     .button-group {
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
       justify-content: center;
     }
-    button {
+    .button-group button {
       cursor: pointer;
       font-size: 1rem;
-      padding: 0.8rem 1.2rem;
+      padding: 0.6rem 1rem;
       border: none;
       border-radius: 4px;
-      transition: background-color 0.3s, transform 0.3s;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-yes {
-      background-color: #e91e63;
       color: #fff;
+      background-color: #c2185b;
+      transition: background-color 0.3s;
     }
-    .btn-yes:hover {
-      background-color: #d81b60;
-      transform: scale(1.05);
-    }
-    .btn-no {
-      background-color: #bbb;
-      color: #fff;
-    }
-    .btn-no:hover {
-      background-color: #999;
-      transform: scale(1.05);
-    }
-    
-    .final-message {
-      display: none;
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #e91e63;
+    .button-group button:hover {
+      background-color: #ad1457;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>사랑하는 ○○○님</h1>
-    <h2>나와 결혼해줄래?</h2>
-    <p>
-      언제나 당신을 생각하면 웃게 되고,<br />
-      당신과 함께하는 모든 순간이 설레고 행복해.<br />
-      앞으로의 인생도 함께하고 싶은데,<br />
-      나와 결혼해 줄래?
-    </p>
-    <div class="button-group">
-      <button class="btn-yes" onclick="showYesMessage()">YES</button>
-      <button class="btn-no" id="noBtn" onmouseover="moveNoBtn()">NO</button>
-    </div>
-    <div class="final-message" id="finalMessage">
-      고마워! 평생 행복하게 해줄게! ❤️
-    </div>
+  <h1>Will You Marry Me?</h1>
+  
+  <!-- 이미지 예시 -->
+  <img src="images/proposal.jpg" alt="프로포즈 사진" class="proposal-img" />
+
+  <div class="message">
+    <p>내가 준비한 특별한 순간을 담은 영상을 봐줘!</p>
   </div>
 
-  <script>
-    const noBtn = document.getElementById('noBtn');
-    const finalMessage = document.getElementById('finalMessage');
+  <!-- 직접 업로드한 mp4 영상 예시 -->
+  <!--
+  <video 
+    src="videos/proposal.mp4" 
+    class="my-video" 
+    controls 
+    autoplay 
+    muted 
+    loop 
+    poster="images/poster.jpg">
+  </video>
+  -->
 
-    function showYesMessage() {
-      // "YES" 버튼을 누르면 메시지 표시
-      finalMessage.style.display = 'block';
-    }
+  <!-- 유튜브 임베드 영상 예시 -->
+  <iframe 
+    width="560" 
+    height="315" 
+    class="my-video"
+    src="https://www.youtube.com/embed/동영상ID?autoplay=1&mute=1"
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen
+  ></iframe>
 
-    function moveNoBtn() {
-      // "NO" 버튼에 마우스가 올라가면 버튼 위치 이동
-      const randomX = Math.random() * 300 - 150; // -150 ~ 150 사이 임의값
-      const randomY = Math.random() * 300 - 150;
-      
-      // 버튼을 CSS transform으로 이동
-      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-    }
-  </script>
+  <div class="message">
+    <p>당신을 위해 모든 순간을 기록했어. 앞으로의 인생도 함께 찍어 나갈 수 있을까?</p>
+  </div>
+  
+  <div class="button-group">
+    <button onclick="alert('YES! 정말 고마워!')">YES</button>
+    <button onmouseover="alert('NO는 안 돼!')">NO</button>
+  </div>
 </body>
 </html>

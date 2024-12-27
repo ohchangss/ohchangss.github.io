@@ -2,12 +2,21 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Our Story | Will You Marry Me?</title>
+  <title>Our Ghibli Story | Will You Marry Me?</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- (선택) 구글 폰트 적용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Noto+Serif+KR:wght@400;700&display=swap" 
+    rel="stylesheet"
+  >
+
   <style>
-    /* ================================
-      공통 스타일 및 초기화
-    ================================= */
+    /* =========================
+       공통 초기화
+    ========================== */
     * {
       margin: 0;
       padding: 0;
@@ -15,38 +24,45 @@
     }
     html, body {
       height: 100%;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: #FFE5EC; /* 연한 핑크 */
-      color: #333;
       line-height: 1.6;
-      overflow: hidden; /* 슬라이드 전환 시 화면 스크롤 방지 */
+      /* 배경: 수채화 느낌의 은은한 파스텔 그라데이션 (지브리 감성) */
+      background: linear-gradient(to bottom right, #e8f3e5, #f9ece6);
+      overflow: hidden; /* 슬라이드 전환 시 스크롤 숨김 */
     }
 
-    /* 반응형 기본 세팅 */
+    /* =========================
+       폰트
+    ========================== */
     body {
+      font-family: 'Noto Serif KR', serif; 
+      /* 서브로 'Dancing Script', cursive 를 일부 헤딩 등에 사용해도 좋음 */
+      color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* ================================
-      컨테이너 & 슬라이드
-    ================================= */
+    /* =========================
+       컨테이너(슬라이드 전체 영역)
+    ========================== */
     .container {
       position: relative;
       width: 100%;
-      max-width: 600px; /* 데스크톱에서 최대 너비 600px */
-      height: 90vh;     /* 브라우저 높이의 90% 사용 */
+      max-width: 600px;
+      height: 90vh;
       margin: auto;
-      background: #fff;
-      border-radius: 10px;
+      background: #fff9f2; /* 살짝 누리끼리한 흰색 */
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
+      border: 2px solid rgba(0,0,0,0.1); /* 얇은 테두리로 수채화 느낌을 더함 */
     }
 
-    /* 각 씬(슬라이드) 기본 스타일 */
+    /* =========================
+       씬(슬라이드) 기본 스타일
+    ========================== */
     .scene {
       position: absolute;
       top: 0;
@@ -62,14 +78,14 @@
       opacity: 0;
       transition: opacity 1s ease;
     }
-
-    /* .active가 붙으면 화면에 표시 (opacity 1) */
     .scene.active {
       opacity: 1;
-      z-index: 1; /* 앞으로 가져옴 */
+      z-index: 1;
     }
 
-    /* 간단한 애니메이션 (페이드-인 느낌) */
+    /* =========================
+       페이드 인 애니메이션
+    ========================== */
     .fade-in {
       animation: fadeInUp 1s forwards;
     }
@@ -84,65 +100,81 @@
       }
     }
 
-    /* 씬별 이미지 스타일 */
+    /* =========================
+       씬 내 이미지
+    ========================== */
     .scene img {
-      max-width: 80%;
+      max-width: 70%;
       height: auto;
+      margin-bottom: 1rem;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      margin-bottom: 1rem;
     }
 
-    /* 텍스트 스타일 */
+    /* =========================
+       텍스트 스타일
+    ========================== */
     h1, h2 {
       margin-bottom: 1rem;
+      /* 지브리 느낌을 더하고 싶다면 Dancing Script를 부분 적용 */
+      font-family: 'Dancing Script', cursive, 'Noto Serif KR', serif;
+      color: #4f2817; /* 짙은 갈색톤으로 빈티지한 느낌 */
     }
-
     p {
       margin-bottom: 1rem;
-      line-height: 1.4;
+      color: #333;
+      line-height: 1.5;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
-    /* 버튼 공통 스타일 */
+    /* =========================
+       버튼 스타일
+    ========================== */
     .btn {
       cursor: pointer;
       padding: 0.8rem 1.2rem;
       margin: 0.5rem;
       border: none;
       border-radius: 4px;
-      background: #f48fb1;
+      background: #d8b4a0; 
       color: #fff;
       font-size: 1rem;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
     }
     .btn:hover {
-      background: #ec407a;
+      background: #c8987e;
+      transform: translateY(-2px);
     }
 
     /* YES/NO 버튼 (마지막 씬) */
     .yes-btn {
-      background: #e91e63;
+      background: #b86e6e;
     }
     .yes-btn:hover {
-      background: #d81b60;
+      background: #a85f5f;
+      transform: translateY(-2px) scale(1.05);
     }
     .no-btn {
-      background: #9e9e9e;
+      background: #7d7d7d;
     }
     .no-btn:hover {
-      background: #616161;
+      background: #5d5d5d;
+      transform: translateY(-2px) scale(1.05);
     }
 
-    /* 반응형: 모바일에서 버튼이나 텍스트가 너무 크게/작게 되지 않게 */
+    /* =========================
+       반응형
+    ========================== */
     @media (max-width: 480px) {
       .container {
-        height: 95vh; /* 모바일 화면 조금 더 크게 */
+        height: 95vh; 
       }
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
       p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
       .btn {
         font-size: 0.9rem;
@@ -153,14 +185,15 @@
 </head>
 <body>
   <div class="container">
-    
+
     <!-- ========== 씬 1: 인트로 ========== -->
     <div class="scene active" id="scene1">
+      <!-- 배경 느낌을 더 살리고 싶다면, 오브젝트 이미지를 적절히 추가 -->
       <img src="images/memory1.jpg" alt="우리의 추억 사진" class="fade-in" />
-      <h1 class="fade-in" style="animation-delay:0.2s;">우리의 이야기</h1>
+      <h1 class="fade-in" style="animation-delay:0.2s;">우리의 지브리 감성 이야기</h1>
       <p class="fade-in" style="animation-delay:0.4s;">
-        처음 만났을 때가 기억나?<br />
-        어색했던 그 순간이 이제는 너무 소중한 추억이 됐지.
+        우리, 처음 만났을 때가 생각나?<br />
+        어색했던 그 순간이 이제는 한 편의 애니메이션 같은 추억이 되었어.
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(2)">
         다음으로
@@ -172,8 +205,9 @@
       <img src="images/memory2.jpg" alt="함께한 순간들" class="fade-in" />
       <h2 class="fade-in" style="animation-delay:0.2s;">함께한 순간들</h2>
       <p class="fade-in" style="animation-delay:0.4s;">
-        웃고, 울고, 서로에게 기대며 수많은 날들을 보냈어.<br />
-        그 모든 시간 덕분에 내가 얼마나 행복했는지 몰라.
+        숲 속을 함께 거니는 토토로처럼,<br />
+        언제나 나에게 편안한 휴식이 되어준 너.<br />
+        우리의 모든 시간은 마치 지브리 영화 속 장면 같아.
       </p>
       <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(3)">
         더 알고 싶어!
@@ -191,7 +225,8 @@
       </p>
       <div class="fade-in" style="animation-delay:0.6s;">
         <button class="btn yes-btn" onclick="showFinal(true)">YES</button>
-        <button class="btn no-btn" onclick="showFinal(false)">NO</button>
+        <!-- NO 버튼: 마우스오버 시 도망가기 -->
+        <button class="btn no-btn" id="noBtn">NO</button>
       </div>
     </div>
 
@@ -199,7 +234,7 @@
     <div class="scene" id="scene4">
       <h2 id="finalText" class="fade-in"></h2>
       <p class="fade-in" style="animation-delay:0.2s;">
-        함께 걸어갈 더 많은 추억, <br />
+        함께 걸어갈 더 많은 추억,<br />
         우리 둘만의 새로운 이야기를 만들어 가자.<br />
         사랑해.
       </p>
@@ -220,7 +255,7 @@
     }
 
     /**
-     * YES/NO 버튼 처리
+     * YES/NO 버튼 클릭 시 처리
      */
     function showFinal(isYes) {
       // 현재 씬(3) 비활성화
@@ -235,9 +270,21 @@
       if (isYes) {
         finalText.textContent = "당신과 평생을 함께하고 싶어! 고마워!";
       } else {
-        finalText.textContent = "장난이지? 사실 거절은 안 받는다구.";
+        finalText.textContent = "거절은 없다고 했잖아! 농담이지만... 사실 널 놓칠 순 없어!";
       }
     }
+
+    /**
+     * NO 버튼 도망가기 (마우스오버 이벤트)
+     */
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      // 랜덤 좌표 계산
+      const randomX = Math.random() * 300 - 150; // -150 ~ 150
+      const randomY = Math.random() * 300 - 150; // -150 ~ 150
+
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    });
   </script>
 </body>
 </html>

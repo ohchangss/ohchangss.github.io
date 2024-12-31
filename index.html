@@ -256,7 +256,7 @@
     </div>
 
     <!-- ========== 씬 4: 최종 메시지 ========== -->
-    <div class="scene" id="scene4">
+    <div class="scene" id="scene6">
       <h2 id="finalText" class="fade-in"></h2>
       <p class="fade-in" style="animation-delay:0.2s;">
         연화야 사랑해 고마워
@@ -301,12 +301,12 @@
      */
     function showFinal(isYes) {
       // 현재 씬(3) 비활성화
-      const scene3 = document.getElementById('scene3');
-      scene3.classList.remove('active');
+      const scene5 = document.getElementById('scene5');
+      scene5.classList.remove('active');
 
       // 다음 씬(4) 활성화
-      const scene4 = document.getElementById('scene4');
-      scene4.classList.add('active');
+      const scene6 = document.getElementById('scene6');
+      scene6.classList.add('active');
 
       // 음소거 해제 (사용자가 YES/NO 클릭했으므로 정책상 재생 가능)
       const bgmAudio = document.getElementById('bgmAudio');

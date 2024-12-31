@@ -294,6 +294,10 @@
 
       const nextScene = document.getElementById(`scene${nextId}`);
       if (nextScene) nextScene.classList.add('active');
+
+      // 음소거 해제 (사용자가 YES/NO 클릭했으므로 정책상 재생 가능)
+      const bgmAudio = document.getElementById('bgmAudio');
+      bgmAudio.muted = false;
     }
 
     /**
@@ -309,8 +313,6 @@
       scene6.classList.add('active');
 
       // 음소거 해제 (사용자가 YES/NO 클릭했으므로 정책상 재생 가능)
-      const bgmAudio = document.getElementById('bgmAudio');
-      bgmAudio.muted = false;
 
       const finalText = document.getElementById('finalText');
       if (isYes) {

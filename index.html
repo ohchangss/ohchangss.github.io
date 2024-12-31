@@ -242,8 +242,9 @@
   <h4 class="fade-in" style="animation-delay:0.2s;">아무런 준비가 안 됐었던 날..</h4>
   <p class="fade-in" style="animation-delay:0.4s;">
     그 때, 사실 내가 먼저<br />
-    '결혼하자'고 말하고 싶었는데... <br />
-    지금은 준비 됐어. 그때 하지 못 한말 지금 말해도 괜찮을까?
+    '결혼하자'고 말하고 싶었는데... 하지 못 했어<br />
+    하지만 지금은 준비 됐어. <br />
+    그때 하지 못 한말 지금 말해도 괜찮을까?
   </p>
   <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(6)">
     다음으로
@@ -267,12 +268,12 @@
 <div class="scene" id="scene7">
   <!-- 마지막 장면에 사진 추가 -->
   <img src="images/final.jpg" alt="마지막 장면" class="fade-in" />
-  <h4 id="finalText" class="fade-in" style="animation-delay:0.2s;">사랑해 김연화</h4>
+  <h4 id="finalText" class="fade-in" style="animation-delay:0.2s;"></h4>
   <p class="fade-in" style="animation-delay:0.4s;">
     앞으로 함께 걸어갈 더 많은 추억,<br />
     우리 둘만의 새롭고 행복한 이야기를 <br />
     함께 써 내려가자<br />
-    사랑해
+    사랑해❤️
   </p>
 </div>
   </div>
@@ -326,7 +327,7 @@
 
       const finalText = document.getElementById('finalText');
       if (isYes) {
-        finalText.textContent = "너와 평생을 함께하고 싶어! 고마워! 사랑해 김연화";
+        finalText.textContent = "너와 평생을 함께하고 싶어! 사랑해 김연화";
       } else {
         finalText.textContent = "거절은 안 돼!";
       }

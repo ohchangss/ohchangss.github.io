@@ -198,7 +198,7 @@
       </button>
     </div>
 
-
+    <!-- ========== 씬 2: 추억 회상 ========== -->
     <div class="scene" id="scene2">
       <img src="images/memory2.jpg" alt="파타고니아 사진진" class="fade-in" />
       <h4 class="fade-in" style="animation-delay:0.2s;">파타고니아 불타는 고구마</h4>
@@ -213,7 +213,7 @@
     </div>
 
 
-    <!-- ========== 씬 2: 추억 회상 ========== -->
+    <!-- ========== 씬 3: 추억 회상 ========== -->
     <div class="scene" id="scene3">
       <img src="images/memory3.jpg" alt="함께한 순간들" class="fade-in" />
       <h4 class="fade-in" style="animation-delay:0.2s;">우리 새해 첫 북한산 </h4>
@@ -221,7 +221,6 @@
 
         그때 지금처럼 지하철을 타고 집으로 가고 있었어<br />
         너가 처음으로 나에게 왜 결혼하자고 안 물어보냐고 했을때 기억나??<br />
-        혹시 기억나면 <br />
         지금 그 날로 같이 돌아가 볼래?
         
       </p>
@@ -230,26 +229,24 @@
       </button>
     </div>
 
-    <!-- ========== 씬 3: 인트로 ========== -->
+    <!-- ========== 씬 4: 추억 회상상 ========== -->
     <div class="scene" id="scene4">
       <img src="images/memory4.jpg" alt="우리의 추억 사진" class="fade-in" />
       <h4 class="fade-in" style="animation-delay:0.2s;">넌 내 전부야</h4>
       <p class="fade-in" style="animation-delay:0.4s;">
-        그 떄 내가 먼저 결혼하자고 말 하고 싶었는데.. 아무런 준비가 안 됐었던 날..<br />
+        그 때 내가 먼저 결혼하자고 말 하고 싶었는데.. 아무런 준비가 안 됐었던 날..<br />
         지금은 준비 됐는데.. 지금 말해도 괜찮을까?<br />
-        
       </p>
-      <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(4)">
+      <button class="btn fade-in" style="animation-delay:0.6s;" onclick="nextScene(5)">
         다음으로
       </button>
     </div>
 
-    <!-- ========== 씬 3: 프로포즈 ========== -->
+    <!-- ========== 씬 5: 프로포즈 ========== -->
     <div class="scene" id="scene5">
       <img src="images/proposal.jpg" alt="프러포즈" class="fade-in" />
       <h2 class="fade-in" style="animation-delay:0.2s;">Will You Marry Me?</h2>
       <p class="fade-in" style="animation-delay:0.4s;">
-
         나와 결혼해줄래?
       </p>
       <div class="fade-in" style="animation-delay:0.6s;">
@@ -264,7 +261,7 @@
       <p class="fade-in" style="animation-delay:0.2s;">
         연화야 사랑해 고마워
         앞으로 함께 걸어갈 더 많은 추억,<br />
-        우리 둘만의 새롭고 행복한 이야기를 함께써 내려가자<br />
+        우리 둘만의 새롭고 행복한 이야기를 함께 써 내려가자<br />
         사랑해
       </p>
     </div>
@@ -278,7 +275,7 @@
   ================================ -->
   <audio
     id="bgmAudio"
-    src="https://cdn.pixabay.com/download/audio/2023/06/20/audio_695f63a72f.mp3?filename=a_peaceful_path-147436.mp3"
+    src="audio/music.mp3"
     autoplay
     loop
     muted
@@ -319,7 +316,7 @@
       if (isYes) {
         finalText.textContent = "너와 평생을 함께하고 싶어! 고마워! 사랑해 김연화";
       } else {
-        finalText.textContent = "거절은 안 돼! (농담이야, 그래도 널 놓칠 수 없어!)";
+        finalText.textContent = "거절은 안 돼!";
       }
     }
 
